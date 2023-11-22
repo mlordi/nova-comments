@@ -14,7 +14,7 @@
             {{ date }}
         </div>
 
-        <div class="mt-2" style="white-space: pre-wrap;" v-html="commentString"></div>
+        <div class="mt-2 do-break" v-html="commentString"></div>
     </div>
 </template>
 
