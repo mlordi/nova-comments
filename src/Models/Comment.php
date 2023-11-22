@@ -7,6 +7,7 @@ namespace KirschbaumDevelopment\NovaComments\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+use App\Models\TaskList;
 
 class Comment extends Model
 {
@@ -49,5 +50,10 @@ class Comment extends Model
     public function commenter(): BelongsTo
     {
         return $this->belongsTo(config('auth.providers.users.model'), 'commenter_id');
+    }
+
+    public function task(): BelongsTo
+    {
+        return $this->belongsTo(TaskList::class, 'commentable_id');
     }
 }
