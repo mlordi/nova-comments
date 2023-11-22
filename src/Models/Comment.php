@@ -18,7 +18,7 @@ class Comment extends Model
      */
     protected $table = 'nova_comments';
 
-    protected $touches = ['TaskList'];
+    protected $touches = ['task'];
 
     /**
      * The "booting" method of the model.
