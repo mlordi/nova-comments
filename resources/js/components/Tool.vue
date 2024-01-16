@@ -28,8 +28,7 @@
 
                 <button class="flex-shrink-0 shadow rounded focus:outline-none focus:ring bg-primary-500 hover:bg-primary-400 active:bg-primary-600 text-white dark:text-gray-800 inline-flex items-center font-bold px-4 h-9 text-sm flex-shrink-0 mb-3 mt-4"
                     type="submit"
-                    @click="createComment"
-                    :disabled="submitted">
+                    @click="createComment">
                     Save Comment
                 </button>
             </div>
@@ -78,8 +77,7 @@
                 data: {
                     next_page_url: '',
                     prev_page_url: '',
-                    resources: {},
-                    submitted: false
+                    resources: {}
                 }
             }
         },
@@ -116,7 +114,6 @@
 
         methods: {
             createComment() {
-                this.submitted = true;
 
                 if (! this.comment) {
                     return false;
