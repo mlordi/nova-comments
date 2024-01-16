@@ -28,7 +28,8 @@
 
                 <button class="flex-shrink-0 shadow rounded focus:outline-none focus:ring bg-primary-500 hover:bg-primary-400 active:bg-primary-600 text-white dark:text-gray-800 inline-flex items-center font-bold px-4 h-9 text-sm flex-shrink-0 mb-3 mt-4"
                     type="submit"
-                    @click="createComment">
+                    @click="createComment"
+                    :disabled="submitted">
                     Save Comment
                 </button>
             </div>
@@ -77,7 +78,8 @@
                 data: {
                     next_page_url: '',
                     prev_page_url: '',
-                    resources: {}
+                    resources: {},
+                    submitted: false
                 }
             }
         },
@@ -109,11 +111,13 @@
 
             queryParams() {
                 return `&orderBy=created_at&orderByDirection=desc&viaResource=${this.resourceName}&viaResourceId=${this.resourceId}&viaRelationship=comments&relationshipType=hasMany`;
-            }
+            },
         },
 
         methods: {
             createComment() {
+                this.submitted = true;
+
                 if (! this.comment) {
                     return false;
                 }
@@ -132,6 +136,7 @@
                         this.resetComment();
 
                         Nova.success(`A new comment has been created.`);
+                        location.reload();
                     })
                     .catch(response => Nova.error(response));
             },
