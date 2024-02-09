@@ -16,6 +16,13 @@ use Laravel\Nova\Resource;
 class Comment extends Resource
 {
     /**
+     * Indicates if the resource should be globally searchable.
+     *
+     * @var bool
+     */
+    public static $globallySearchable = false;
+    
+    /**
      * The model the resource corresponds to.
      *
      * @var string
